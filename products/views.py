@@ -25,10 +25,15 @@ def all_products(request):
                 # For the event of user sorting by name
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
+            # If category, the products.order_by will be category__name
+            if sortkey == 'category':
+                sortkey = 'category__name'
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 # Check direction in order to decide whether to reverse the order
                 if direction == 'desc':
+                    # Minus in front means reverse
                     sortkey = f'-{sortkey}'
             # Finally, to really sort
             products = products.order_by(sortkey)
