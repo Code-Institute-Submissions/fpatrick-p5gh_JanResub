@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',  # Add created home project
     'products',
+    'bag',
 ]
 
 MIDDLEWARE = [
