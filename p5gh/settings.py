@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'home',  # Add created home project
     'products',
     'bag',
+    'checkout',
 ]
 
 MIDDLEWARE = [
