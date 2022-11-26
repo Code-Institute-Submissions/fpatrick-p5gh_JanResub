@@ -3,17 +3,17 @@ html {
 }
 
 .xbox {
-    background: url('/media/xbox-background.jpg');
+    background: url('/media/xbox-background.jpg') no-repeat;
     background-size: cover;
 }
 
 .playstation {
-    background: url('/media/playstation-background.jpg');
+    background: url('/media/playstation-background.jpg') no-repeat;
     background-size: cover;
 }
 
 .nintendo {
-    background: url('/media/nintendo-background.jpg');
+    background: url('/media/nintendo-background.jpg') no-repeat;
     background-size: cover;
 }
 
