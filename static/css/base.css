@@ -2,6 +2,21 @@ html {
     height: 100%;
 }
 
+.xbox {
+    background: url('/media/xbox-background.jpg');
+    background-size: cover;
+}
+
+.playstation {
+    background: url('/media/playstation-background.jpg');
+    background-size: cover;
+}
+
+.nintendo {
+    background: url('/media/nintendo-background.jpg');
+    background-size: cover;
+}
+
 body {
     background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
     background-size: cover;
