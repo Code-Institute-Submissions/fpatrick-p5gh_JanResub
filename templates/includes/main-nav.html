@@ -37,7 +37,7 @@
                 <a href="{% url 'products' %}?category=playstation_games" class="dropdown-item">Playstation</a>
                 <a href="{% url 'products' %}?category=nintendo_games" class="dropdown-item">Nintendo</a>
                 <a href="{% url 'products' %}?category=xbox_games,playstation_games,nintendo_games"
-                   class="dropdown-item">All Consoles</a>
+                   class="dropdown-item">All Games</a>
             </div>
         </li>
 
@@ -64,6 +64,7 @@
                 Merchandise
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="merchandise-link">
+                <a href="{% url 'products' %}?category=figures" class="dropdown-item">Clothing</a>
                 <a href="{% url 'products' %}?category=figures" class="dropdown-item">Figures</a>
                 <a href="{% url 'products' %}?category=mugs" class="dropdown-item">Mugs</a>
                 <a href="{% url 'products' %}?category=misc_merchandise" class="dropdown-item">Misc Merchandise</a>
