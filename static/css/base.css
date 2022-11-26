@@ -12,6 +12,14 @@ html {
     background-size: cover;
 }
 
+.badge {
+    font-size: 130%; !important;
+}
+
+.card {
+    opacity: 97%; !important;
+}
+
 .nintendo {
     background: url('/media/nintendo-background.jpg') no-repeat;
     background-size: cover;
