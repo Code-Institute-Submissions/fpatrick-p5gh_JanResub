@@ -1,12 +1,8 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
-        <li class="nav-item d-block d-md-none">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}" id="home-link">
-                Home
-            </a>
-        </li>
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
@@ -18,63 +14,75 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="consoles-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="consoles-link"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Consoles
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="consoles-link">
                 <a href="{% url 'products' %}?category=xbox_console" class="dropdown-item">Xbox</a>
                 <a href="{% url 'products' %}?category=playstation_console" class="dropdown-item">Playstation</a>
                 <a href="{% url 'products' %}?category=nintendo_console" class="dropdown-item">Nintendo</a>
-                <a href="{% url 'products' %}?category=xbox_console,playstation_console,nintendo_console" class="dropdown-item">All Consoles</a>
+                <a href="{% url 'products' %}?category=xbox_console,playstation_console,nintendo_console"
+                   class="dropdown-item">All Consoles</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="games-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="games-link"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Games
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="games-link">
                 <a href="{% url 'products' %}?category=xbox_games" class="dropdown-item">Xbox</a>
                 <a href="{% url 'products' %}?category=playstation_games" class="dropdown-item">Playstation</a>
                 <a href="{% url 'products' %}?category=nintendo_games" class="dropdown-item">Nintendo</a>
-                <a href="{% url 'products' %}?category=xbox_games,playstation_games,nintendo_games" class="dropdown-item">All Consoles</a>
+                <a href="{% url 'products' %}?category=xbox_games,playstation_games,nintendo_games"
+                   class="dropdown-item">All Consoles</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="accessories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="accessories-link"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Accessories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
                 <a href="{% url 'products' %}?category=headsets" class="dropdown-item">Headsets</a>
                 <a href="{% url 'products' %}?category=xbox_controller" class="dropdown-item">Xbox Controller</a>
-                <a href="{% url 'products' %}?category=playstation_controller" class="dropdown-item">Playstation Controller</a>
-                <a href="{% url 'products' %}?category=nintendo_controller" class="dropdown-item">Nintendo Controller</a>
-                <a href="{% url 'products' %}?category=headsets,xbox_controller,playstation_controller,nintendo_controller" class="dropdown-item">All Accessories</a>
+                <a href="{% url 'products' %}?category=playstation_controller" class="dropdown-item">Playstation
+                    Controller</a>
+                <a href="{% url 'products' %}?category=nintendo_controller" class="dropdown-item">Nintendo
+                    Controller</a>
+                <a href="{% url 'products' %}?category=headsets,xbox_controller,playstation_controller,nintendo_controller"
+                   class="dropdown-item">All Accessories</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="merchandise-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="merchandise-link"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Merchandise
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="merchandise-link">
                 <a href="{% url 'products' %}?category=figures" class="dropdown-item">Figures</a>
                 <a href="{% url 'products' %}?category=mugs" class="dropdown-item">Mugs</a>
                 <a href="{% url 'products' %}?category=misc_merchandise" class="dropdown-item">Misc Merchandise</a>
-                <a href="{% url 'products' %}?category=figures,mugs,misc_merchandise" class="dropdown-item">All Merchandise</a>
+                <a href="{% url 'products' %}?category=figures,mugs,misc_merchandise" class="dropdown-item">All
+                    Merchandise</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
                 <a href="{% url 'products' %}?category=new_arrivals" class="dropdown-item">New Arrivals</a>
                 <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
                 <a href="{% url 'products' %}?category=clearance" class="dropdown-item">Clearance</a>
-                <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="dropdown-item">All
+                    Specials</a>
             </div>
         </li>
     </ul>
