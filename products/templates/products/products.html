@@ -76,12 +76,18 @@
                                                     <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
                                                 </a>
                                             </p>
-                                            {% endif%}
+                                            {% endif %}
                                             {% if product.rating %}
                                                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
-                                             {% endif %}
+                                            {% endif %}
+                                            {% if request.user.is_superuser %}
+                                                <small class="ml-3">
+                                                    <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                </small>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -120,30 +126,26 @@
 {% endblock %}
 
 {% block postloadjs %}
-    <!-- Append in the block instead of replacing it -->
     {{ block.super }}
     <script type="text/javascript">
-        $('.btt-link').click(function(e) {
-            window.scrollTo(0,0)
-        })
-    </script>
-    <script type="text/javascript">
-        // When change the value of sort selector
-        $('#sort-selector').change(function() {
+		$('.btt-link').click(function(e) {
+			window.scrollTo(0,0)
+		})
+	</script>
 
-            var selector = $(this)
-            // Get current url
+    <script type="text/javascript">
+        $('#sort-selector').change(function() {
+            var selector = $(this);
             var currentUrl = new URL(window.location);
-            // Put new value into var
+
             var selectedVal = selector.val();
             if(selectedVal != "reset"){
-                var sort = selectedVal.split("_")[0]
-                var direction = selectedVal.split("_")[1]
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
 
-                // Replace params in the url
                 currentUrl.searchParams.set("sort", sort);
                 currentUrl.searchParams.set("direction", direction);
-                // Apply updated url
+
                 window.location.replace(currentUrl);
             } else {
                 currentUrl.searchParams.delete("sort");
