@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-%z8+^u2n&_^u0sc^w%bo=gqmqjr1pf8!hn^2##%4w*af+t^2u2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gamerhood.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['gamerhood.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -130,10 +130,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
