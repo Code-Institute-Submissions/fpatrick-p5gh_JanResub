@@ -28,19 +28,21 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
-                    <p class="mb-0">{{ product.name }}</p>
-                    <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
+                    <h3 class="mb-0">{{ product.name }}</h3>
                     {% if product.category %}
                     <p class="small mt-1 mb-0">
                         <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                             {% if product.category.name == 'xbox_console' or product.category.name == 'xbox_games' %}
+                                <span class="green"><i class="fa-brands fa-xbox"></i> {{ product.category.friendly_name }}</span>
+                             {% elif product.category.name == 'playstation_console' or product.category.name == 'playstation_games' %}
+                                <span class="blue"><i class="fa-brands fa-playstation"></i> {{ product.category.friendly_name }}</span>
+                             {% elif product.category.name == 'nintendo_console' or product.category.name == 'nintendo_games' %}
+                                <span class="red"><i class="fa-solid fa-dice-two"></i> {{ product.category.friendly_name }}</span>
+                            {% else %}
                             <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                            {% endif %}
                         </a>
                     </p>
-                    {% endif %}
-                    {% if product.rating %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                    {% else %}
-                        <small class="text-muted">No Rating</small>
                     {% endif %}
                     {% if request.user.is_superuser %}
                         <small class="ml-3">
@@ -49,7 +51,24 @@
                         </small>
                     {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9PC_FvLmazM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {{ product.video | safe }}
+                    <div class="mt-1">
+                        {% if product.rating %}
+                            <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                        {% else %}
+                            <small class="text-muted">No Rating</small>
+                        {% endif %}
+                    </div>
+                    {% if product.pegi %}
+                        <div>
+                            <small class="text-muted"><i class="fa-solid fa-hand"></i> PEGI {{ product.pegi }}</small>
+                        </div>
+                    {% endif %}
+                    {% if product.release_date %}
+                        <div>
+                            <small class="text-muted"><i class="fa-solid fa-calendar"></i> Release {{ product.release_date }}</small>
+                        </div>
+                    {% endif %}
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
@@ -66,43 +85,57 @@
                                     </select>
                                 </div>
                             {% endif %}
+
                             <div class="col-12">
-                                <p class="mt-3"><strong>Quantity:</strong></p>
-                                <div class="form-group w-50">
-                                    <div class="input-group input-group-{{ product.id }}">
-                                        <div class="input-group-prepend">
-                                            <button class="decrement-qty btn btn-black rounded-0 decrement-qty_{{ product.id }}"
+                                <p class="lead mb-0 mt-3 text-left font-weight-bold">€{{ product.price }}</p>
+                                {% if product.stock != 0 %}
+                                    <small>In stock <span id="stock">{{ product.stock }}</span> units</small>
+                                    <p class="mt-1"><strong>Quantity:</strong></p>
+                                    <div class="form-group w-50">
+                                        <div class="input-group input-group-{{ product.id }}">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-black rounded-0 decrement-qty_{{ product.id }}"
+                                                    data-item_id="{{ product.id }}">
+                                                    <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control qty_input id_qty_{{ product.id }}" type="number"
+                                                name="quantity" value="1" min="1" max="99"
                                                 data-item_id="{{ product.id }}">
-                                                <span class="icon">
-                                                    <i class="fas fa-minus"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <input class="form-control qty_input id_qty_{{ product.id }}" type="number"
-                                            name="quantity" value="1" min="1" max="99"
-                                            data-item_id="{{ product.id }}">
-                                        <div class="input-group-append">
-                                            <button class="increment-qty btn btn-black rounded-0 increment-qty_{{ product.id }}"
-                                                data-item_id="{{ product.id }}">
-                                                <span class="icon">
-                                                    <i class="fas fa-plus"></i>
-                                                </span>
-                                            </button>
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-black rounded-0 increment-qty_{{ product.id }}"
+                                                    data-item_id="{{ product.id }}">
+                                                    <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col{% if s %}-12 mt-2{% endif %}">
+                                        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
+                                            <span class="icon">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </span>
+                                            <span class="text-uppercase">Keep Shopping</span>
+                                        </a>
+                                        <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                    </div>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                {% else %}
+                                    <div class="col-12 m-4">
+                                        <h5 class="red">Out of Stock</h5>
+                                    </div>
+                                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="text-uppercase">Keep Shopping</span>
+                                    </a>
+                                {% endif %}
                             </div>
-
-                            <div class="col{% if s %}-12 mt-2{% endif %}">
-                                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Keep Shopping</span>
-                                </a>
-                                <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
-                            </div>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% endwith %}
                         </div>
                     </form>

@@ -12,8 +12,9 @@
             var currentValue = parseInt($(`.id_qty_${itemId}`).val());
         }
 
+        var stock = $('#stock').text();
         var minusDisabled = currentValue < 2;
-        var plusDisabled = currentValue > 98;
+        var plusDisabled = currentValue >= stock;
 
         if (size) {
             $(`.decrement-size_${itemId}_${size}`).prop('disabled', minusDisabled);
