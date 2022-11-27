@@ -1,1 +1,1 @@
-web: gunicorn gamerhood.wsgi:application
+web: gunicorn p5gh.wsgi:application
