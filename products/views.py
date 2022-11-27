@@ -176,6 +176,17 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
+@login_required
+def delete_review(request, product_id):
+    """ Delete a review from the store """
+
+    review = get_object_or_404(Review, id=product_id)
+    product = review.product
+    review.delete()
+    messages.success(request, 'Review deleted!')
+    return redirect(reverse('product_detail', args=[product.id]))
+
+
 def add_review(request, product_id):
     """ Add a product review """
 
