@@ -83,6 +83,9 @@
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.product.price }}</p>
                                     </td>
+                                    <td class="py3">
+                                        <small>In stock <span id="stock">{{ item.product.stock }}</span> units</small>
+                                    </td>
                                     <td class="py-3 w-25">
                                         {% include "bag/quantity-form.html" %}
                                     </td>
