@@ -31,10 +31,12 @@ class ReviewForm(forms.ModelForm):
     # from https://docs.djangoproject.com/en/4.1/ref/forms/validation/
     def clean_rating(self):
         data = self.cleaned_data['rating']
-        if data < 1:
-            raise ValidationError(('Please enter a rating between 1 and 10'))
 
-        if data > 10:
-            raise ValidationError(('Please enter a rating between 1 and 10'))
+        if data:
+            if data < 1:
+                raise ValidationError(('Please enter a rating between 1 and 10'))
+
+            if data > 10:
+                raise ValidationError(('Please enter a rating between 1 and 10'))
 
         return data

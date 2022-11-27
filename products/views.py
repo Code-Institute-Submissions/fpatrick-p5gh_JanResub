@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category
+from .models import Product, Category, Review
 from .forms import ProductForm, ReviewForm
 
 
@@ -64,10 +64,15 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = Review.objects.filter(
+        product=product).order_by('-created_on')
+
     review_form = ReviewForm(data=request.POST)
+
     context = {
         'product': product,
         'review_form': review_form,
+        'reviews': reviews,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -140,26 +145,51 @@ def delete_product(request, product_id):
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
 
-def add_review(request):
+
+def add_review(request, product_id):
     """ Add a product review """
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
 
+    product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            product = form.save()
-            messages.success(request, 'Successfully added product!')
+        review_form = ReviewForm(request.POST)
+
+        if review_form.is_valid():
+            exist_review= Review.objects.filter(product=product, user=request.user)
+            if not exist_review:
+                Review.objects.create(
+                    product=product,
+                    user=request.user,
+                    title=request.POST['title'],
+                    review=request.POST['review'],
+                    rating=request.POST['rating'],
+                )
+                reviews = Review.objects.filter(product=product)
+
+                rating_average = calc_rating(reviews, product)
+                Product.objects.filter(id=product.id).update(total_rating=rating_average)
+
+                messages.success(
+                    request, 'Your review has been successfully added!')
+            else:
+                messages.error(request, 'You have already reviewed '
+                                        'this product!')
             return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
-    else:
-        form = ProductForm()
 
-    template = 'products/add_product.html'
-    context = {
-        'form': form,
-    }
+        messages.error(request, 'Your review has not been submitted')
+    messages.error(request, 'Invalid Method.')
+    return redirect(reverse('product_detail', args=[product.id]))
 
-    return render(request, template, context)
+
+def calc_rating(reviews, product):
+    """ Calculate total rating """
+
+    all_reviews = Review.objects.filter(product=product)
+
+    number_reviews = len(all_reviews)
+    total_ratings = 0
+    for review in reviews:
+        total_ratings += review.rating
+
+    if number_reviews > 0:
+        average_rating = (total_ratings / number_reviews)
+        return average_rating

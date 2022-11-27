@@ -137,22 +137,36 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>{{ product.total_rating }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {% for review in reviews %}
+                    <div class="card-body pb-0">
+                        <p class="mb-0">{{ review.title }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                {% if request.user.is_authenticated %}
+                    <p>Logged in as: {{ request.user.username }}</p>
+                    <form method="post" action="{% url 'add_review' product.id %}" class="form">
+                        {{ review_form | crispy }}
+                        {% csrf_token %}
+                        <br>
+                        <button type="submit" class="btn btn-black text-uppercase rounded-0">Submit</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
-<form method="post" action="" style="margin-top: 1.3em;">
-                    {{ review_form | crispy }}
-                    {% csrf_token %}
-                    <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
 
-
-{% if request.user.is_authenticated %}
-    <h3>Leave a comment:</h3>
-    <p>Posting as: {{ request.user.username }}</p>
-{% endif %}
 {% endblock %}
-
-
 
 {% block postloadjs %}
 {{ block.super }}
