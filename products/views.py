@@ -107,6 +107,7 @@ def add_product(request):
 @login_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -128,6 +129,35 @@ def edit_product(request, product_id):
     context = {
         'form': form,
         'product': product,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_review(request, product_id):
+    """ Edit a review in the store """
+
+    #product = get_object_or_404(Product, pk=product_id)
+    review = get_object_or_404(Review, id=product_id)
+    product = review.product
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated review!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to update review. Please ensure the form is valid.')
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, f'You are editing {product.name} review')
+
+    template = 'products/edit_review.html'
+    context = {
+        'form': form,
+        'product': product,
+        'review': review,
     }
 
     return render(request, template, context)
@@ -171,12 +201,11 @@ def add_review(request, product_id):
                 messages.success(
                     request, 'Your review has been successfully added!')
             else:
-                messages.error(request, 'You have already reviewed '
-                                        'this product!')
+                messages.error(request, 'You have already reviewed this product!')
             return redirect(reverse('product_detail', args=[product.id]))
 
-        messages.error(request, 'Your review has not been submitted')
-    messages.error(request, 'Invalid Method.')
+        messages.error(request, 'Your review could not be validated')
+    messages.error(request, 'Error submitting review')
     return redirect(reverse('product_detail', args=[product.id]))
 
 

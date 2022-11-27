@@ -140,7 +140,7 @@
     <div class="container">
         <div class="row mt-4 mb-5">
             <div class="col-12 gold text-center">
-                <h3><span class="black">Gamers Rating</span> {{ product.total_rating }}</h3>
+                <h3><span class="black">Gamers Rating</span> {{ product.total_rating }} / 10</h3>
                 {% if product.total_rating <= 1.0 %}
                     <i class="fa-solid fa-star"></i>
                 {% elif product.total_rating > 1.1 and product.total_rating <= 2.0 %}
@@ -212,7 +212,8 @@
         <div class="row">
             <div class="col-md-4 col-sm-12 col-xs-12 mt-3 mb-3">
                 {% if request.user.is_authenticated %}
-                    <p>Logged in as: {{ request.user.username }}</p>
+                    <h4 class="">Write a review</h4>
+                    <small>Logged in as {{ request.user.username }}</small>
                     <form method="post" action="{% url 'add_review' product.id %}" class="form">
                         {{ review_form | crispy }}
                         {% csrf_token %}
@@ -230,6 +231,12 @@
                 <div>
                     <div class="card">
                         <div class="card-body">
+                            {% if request.user == review.user %}
+                            <small class="ml-3">
+                                <a href="{% url 'edit_review' review.id %}">Edit</a> |
+                                <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </small>
+                            {% endif %}
                             <h5 class="card-title">{{ review.title }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Reviewed by {{ review.user }}</h6>
                             <p class="card-text"> {{ review.review }} </p>
