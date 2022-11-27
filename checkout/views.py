@@ -64,30 +64,46 @@ def checkout(request):
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    if product.stock >= item_data:
-                        if isinstance(item_data, int):
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                        )
+
+                        if product.stock >= item_data:
+
+                            product.stock = product.stock - item_data
+                            product.save()
+                            order_line_item.save()
+                        else:
+                            messages.error(request, (
+                                "One of the products in your don't have enough stock. "
+                                "Please check your bag or call us for assistance!")
+                                           )
+                            order.delete()
+                            return redirect(reverse('view_bag'))
+                    else:
+                        for size, quantity in item_data['items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
-                                quantity=item_data,
+                                quantity=quantity,
+                                product_size=size,
                             )
-                            order_line_item.save()
-                        else:
-                            for size, quantity in item_data['items_by_size'].items():
-                                order_line_item = OrderLineItem(
-                                    order=order,
-                                    product=product,
-                                    quantity=quantity,
-                                    product_size=size,
-                                )
+
+                            if product.stock >= quantity:
+
+                                product.stock = product.stock - quantity
+                                product.save()
                                 order_line_item.save()
-                    else:
-                        messages.error(request, (
-                            "One of the products in your don't have enough stock. "
-                            "Please check your bag or call us for assistance!")
-                                       )
-                        order.delete()
-                        return redirect(reverse('view_bag'))
+                            else:
+                                messages.error(request, (
+                                    "One of the products in your don't have enough stock. "
+                                    "Please check your bag or call us for assistance!")
+                                               )
+                                order.delete()
+                                return redirect(reverse('view_bag'))
 
                 except Product.DoesNotExist:
                     messages.error(request, (
