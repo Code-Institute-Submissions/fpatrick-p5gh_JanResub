@@ -138,20 +138,79 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1>{{ product.total_rating }}</h1>
+        <div class="row mt-4 mb-5">
+            <div class="col-12 gold text-center">
+                <h3><span class="black">Gamers Rating</span> {{ product.total_rating }}</h3>
+                {% if product.total_rating <= 1.0 %}
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 1.1 and product.total_rating <= 2.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 2.0 and product.total_rating <= 3.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 3.0 and product.total_rating <= 4.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 4.0 and product.total_rating <= 5.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 5.0 and product.total_rating <= 6.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 6.0 and product.total_rating <= 7.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 7.0 and product.total_rating <= 8.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 8.0 and product.total_rating <= 9.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% elif product.total_rating > 9.0 and product.total_rating <= 10.0 %}
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                {% endif %}
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
-                {% for review in reviews %}
-                    <div class="card-body pb-0">
-                        <p class="mb-0">{{ review.title }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="col-6">
+            <div class="col-md-4 col-sm-12 col-xs-12 mt-3 mb-3">
                 {% if request.user.is_authenticated %}
                     <p>Logged in as: {{ request.user.username }}</p>
                     <form method="post" action="{% url 'add_review' product.id %}" class="form">
@@ -160,8 +219,26 @@
                         <br>
                         <button type="submit" class="btn btn-black text-uppercase rounded-0">Submit</button>
                     </form>
+                {% else %}
+
+                <h4 class="mt-5">You must be logged-in to review.</h4>
+
                 {% endif %}
             </div>
+            {% for review in reviews|slice:"10" %}
+            <div class="col-md-4 col-lg-3 col-sm-12 col-xs-12 mt-3 mb-3">
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ review.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Reviewed by {{ review.user }}</h6>
+                            <p class="card-text"> {{ review.review }} </p>
+                            <span class="card-link gold"><i class="fa-solid fa-star"></i> {{ review.rating }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 

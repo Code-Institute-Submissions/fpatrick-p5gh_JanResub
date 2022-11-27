@@ -25,7 +25,7 @@ class Product(models.Model):
     name = models.CharField(max_length=254)
     stock = models.IntegerField(default=0)
     description = models.TextField()
-    total_rating = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    total_rating = models.DecimalField(max_digits=4, decimal_places=1, null=True, blank=True)
     video = models.TextField(null=True, blank=True)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
