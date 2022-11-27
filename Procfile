@@ -1,1 +1,1 @@
-web: gunicorn p5gh.wsgi:application
+web: gunicorn p5gh.wsgi
