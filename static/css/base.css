@@ -31,6 +31,22 @@ html {
     background-size: cover;
 }
 
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}
+
+.red {
+    color: red;
+}
+
+.card {
+    opacity: 95%; !important;
+}
+
 body {
     background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
     background-size: cover;
