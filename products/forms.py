@@ -1,4 +1,6 @@
 from django import forms
+from django.core.exceptions import ValidationError
+
 from .widgets import CustomClearableFileInput
 from .models import Product, Category, Review
 
@@ -24,5 +26,15 @@ class ProductForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = '__all__'
+        fields = ['title', 'review', 'rating']
 
+    # from https://docs.djangoproject.com/en/4.1/ref/forms/validation/
+    def clean_rating(self):
+        data = self.cleaned_data['rating']
+        if data < 1:
+            raise ValidationError(('Please enter a rating between 1 and 10'))
+
+        if data > 10:
+            raise ValidationError(('Please enter a rating between 1 and 10'))
+
+        return data
