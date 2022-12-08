@@ -2,6 +2,23 @@ html {
     height: 100%;
 }
 
+.white-color {
+    color: white;
+}
+
+#search-home::placeholder {
+    color:#7d6346;
+}
+
+.search-btn {
+    background: #4d3d2b;
+    color: black;
+}
+
+.border-dark-mustard {
+    border-color: #4d3d2b;
+}
+
 .xbox {
     background: url('/media/xbox-background.jpg') no-repeat;
     background-size: cover;
