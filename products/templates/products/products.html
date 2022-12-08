@@ -100,7 +100,7 @@
                                             {% if product.total_rating %}
                                                 <small class="text-muted"> | <i class="fas fa-star mr-1"></i>{{ product.total_rating }} / 10</small>
                                             {% else %}
-                                                <small class="text-muted"> | No Rating</small>
+                                                <small class="text-muted"> | <i class="fas fa-star mr-1"></i>No Rating</small>
                                             {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">

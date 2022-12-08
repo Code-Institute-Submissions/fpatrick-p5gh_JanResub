@@ -69,7 +69,7 @@
                             {% if s %}
                                 <div class="col-12">
                                     <p><strong>Size:</strong></p>
-                                    <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
+                                    <select class="form-control rounded w-50" name="product_size" id='id_product_size'>
                                         <option value="xs">XS</option>
                                         <option value="s">S</option>
                                         <option value="m" selected>M</option>
@@ -141,7 +141,7 @@
         <div class="row mt-4 mb-5">
             <div class="col-12 gold text-center">
                 <hr/>
-                <h3><span class="black">Gamers Rating</span> {{ product.total_rating }} / 10</h3>
+                <h3><span class="black">Gamers Rating</span>{% if product.total_rating %} {{ product.total_rating }} / 10 {% else %} Sorry, no ratings yet {% endif %}</h3>
 
                 {% if product.total_rating >= 1.0 and product.total_rating < 2.0 %}
                     <i class="fa-solid fa-star"></i>
@@ -218,7 +218,7 @@
                         {{ review_form | crispy }}
                         {% csrf_token %}
                         <br>
-                        <button type="submit" class="btn btn-black text-uppercase rounded-0">Submit</button>
+                        <button type="submit" class="btn btn-black text-uppercase rounded">Submit</button>
                     </form>
                 {% else %}
 
