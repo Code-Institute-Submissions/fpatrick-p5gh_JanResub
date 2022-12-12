@@ -13,16 +13,19 @@ html {
 }
 
 #search-home::placeholder {
-    color:#7d6346;
+    color:#febd69;
+    opacity: 60%;
 }
 
 .search-btn {
-    background: #4d3d2b;
+    background: #febd69;
     color: black;
+    opacity: 80%
 }
 
 .border-dark-mustard {
-    border-color: #4d3d2b;
+    border-color: #febd69;
+    opacity: 80%;
 }
 
 .xbox {
