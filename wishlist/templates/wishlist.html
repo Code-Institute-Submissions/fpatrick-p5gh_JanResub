@@ -2,10 +2,48 @@
 {% load static %}
 
 {% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
-{% endblock %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col text-center mt-4 fifty-height">
+            <h5 class="logo-font mb-4">{{ request.user.username }} Wishlist</h5>
+            <br>
+            {% if wishlist_items %}
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price Now</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Added to Wishlist at</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for wishlist_item in wishlist_items %}
+                    <tr>
+                        <th scope="row">{{ wishlist_item.product }}</th>
+                        <td>{{ wishlist_item.product.price }}</td>
+                        <td>{{ wishlist_item.product.stock }}</td>
+                        <td>{{ wishlist_item.added_at }}</td>
+                        <td><a href="{% url 'remove_from_wishlist' wishlist_item.product.id %}" class="btn btn-outline-black rounded">Remove</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <h2>You don't have any items in your wishlist</h2>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}
 
-{% block postloadjs %}
-{% endblock %}
+    {% block postloadjs %}
+    {% endblock %}

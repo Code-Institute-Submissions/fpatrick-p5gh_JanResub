@@ -28,6 +28,10 @@ html {
     opacity: 80%;
 }
 
+.fifty-height {
+    min-height: 50vh;
+}
+
 .xbox {
     background: url('/media/xbox-background.jpg') no-repeat;
     background-size: cover;

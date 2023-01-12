@@ -197,7 +197,7 @@ def add_review(request, product_id):
         review_form = ReviewForm(request.POST)
 
         if review_form.is_valid():
-            exist_review= Review.objects.filter(product=product, user=request.user)
+            exist_review = Review.objects.filter(product=product, user=request.user)
             if not exist_review:
                 Review.objects.create(
                     product=product,

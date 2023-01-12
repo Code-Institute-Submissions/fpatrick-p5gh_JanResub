@@ -1,22 +1,39 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from django.urls import reverse
 
 from products.models import Product
 from wishlist.models import Wishlist
 
 
 # Create your views here.
+@login_required
 def add_to_wishlist(request, product_id):
-    user = request.user
-    product = Product.objects.get(id=product_id)
-    Wishlist.objects.create(user=user, product=product)
-    return redirect('wishlist')
+    product = get_object_or_404(Product, pk=product_id)
+    exist_wishlist_item = Wishlist.objects.filter(product=product, user=request.user)
+    if not exist_wishlist_item:
+        Wishlist.objects.create(
+            product=product,
+            user=request.user,
+        )
+
+        messages.success(
+            request, 'The product has been successfully added to your wishlist!')
+    else:
+        messages.error(request, 'You have already added this product in your wishlist!')
+
+    return redirect(reverse('product_detail', args=[product_id]))
 
 
+@login_required
 def wishlist(request):
     wishlist_items = Wishlist.objects.filter(user=request.user)
     return render(request, 'wishlist.html', {'wishlist_items': wishlist_items})
 
 
+@login_required
 def remove_from_wishlist(request, product_id):
     Wishlist.objects.filter(user=request.user, product_id=product_id).delete()
-    return redirect('wishlist')
+    messages.success(request, 'Item removed from your wishlist!')
+    return redirect(reverse('wishlist'))
