@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .forms import UpdateTestimonialForm, TestimonialForm
+from .forms import TestimonialForm
 from .models import Testimonial
 
 
@@ -36,6 +36,7 @@ def add_testimonial(request):
                 testimonial.save()
                 messages.success(request, 'Testimonial created successfully')
                 return redirect('edit_testimonial')
+            messages.error(request, 'Please enter a rating between 1 and 10!')
         else:
             form = TestimonialForm()
         return render(request, 'add_testimonial.html', {'form': form})
@@ -45,13 +46,14 @@ def add_testimonial(request):
 def edit_testimonial(request):
     testimonial = Testimonial.objects.get(user=request.user)
     if request.method == 'POST':
-        form = UpdateTestimonialForm(request.POST, instance=testimonial)
+        form = TestimonialForm(request.POST, instance=testimonial)
         if form.is_valid():
             form.save()
             messages.success(request, 'Testimonial updated successfully')
             return redirect('edit_testimonial')
+        messages.error(request, 'Please enter a rating between 1 and 10!')
     else:
-        form = UpdateTestimonialForm(instance=testimonial)
+        form = TestimonialForm(instance=testimonial)
     return render(request, 'edit_testimonial.html', {'form': form, 'testimonial': testimonial})
 
 
