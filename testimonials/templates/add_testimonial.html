@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+  <div class="container">
+        <div class="row">
+            <div class="col-12 offset-md-4  col-md-6">
+                <hr>
+                <h2 class="logo-font mb-4">Testimonial</h2>
+                <h5 class="text-muted">Add a testimonial</h5>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 offset-md-4  col-md-6">
+                <form method="post" action="{% url 'add_testimonial' %}" class="form mb-2">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                            <div class="{{ field.field.widget.attrs.class }}">
+                                {{ field }}
+                                {% for error in field.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="text-right">
+                        <input class="btn btn-black rounded-0" type="submit" value="Create testimonial">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
