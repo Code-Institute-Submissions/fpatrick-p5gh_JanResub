@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import PageNotAnInteger, Paginator, EmptyPage
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -8,8 +9,18 @@ from .models import Testimonial
 
 
 # Create your views here.
-def testimonials(request):
-    testimonials = Testimonial.objects.all()
+def all_testimonials(request):
+    testimonials_list = Testimonial.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(testimonials_list, 3)
+    try:
+        testimonials = paginator.page(page)
+    except PageNotAnInteger:
+        testimonials = paginator.page(1)
+    except EmptyPage:
+        testimonials = paginator.page(paginator.num_pages)
+
     return render(request, 'testimonials.html', {'testimonials': testimonials})
 
 
