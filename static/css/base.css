@@ -430,5 +430,5 @@ input[name='q']::placeholder {
 
 #mc_embed_signup {
     clear: left;
-    width: 500px;
+    max-width: 500px;
 }
