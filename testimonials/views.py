@@ -13,7 +13,7 @@ def all_testimonials(request):
     testimonials_list = Testimonial.objects.all()
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(testimonials_list, 3)
+    paginator = Paginator(testimonials_list, 5)
     try:
         testimonials = paginator.page(page)
     except PageNotAnInteger:

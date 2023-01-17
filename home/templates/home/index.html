@@ -45,7 +45,7 @@
                                     </blockquote>
                                 </div>
                                 <div class="card-footer text-muted">
-                                    <span class="testimonial-date-size">{{ testimonial.created_at }}</span>
+                                    <span class="testimonial-date-size">{{ testimonial.created_at|date:"d/m/Y" }}</span>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                     </blockquote>
                                 </div>
                                 <div class="card-footer text-muted">
-                                    {{ extra_testimonial.created_at }}
+                                    <span class="testimonial-date-size">{{ extra_testimonial.created_at|date:"d/m/Y" }}</span>
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,7 @@
 <div class="overlay"></div>
 <div class="container pb-5">
     <div class="row">
-        <div class="col text-center mt-3 mb-4">
+        <div class="col text-center mt-5 mb-4">
             <h5 class="logo-font">Testimonials</h5>
         </div>
     </div>
@@ -23,9 +23,9 @@
         <div class="col-12 col-md-12 mb-4">
             <div class="card rounded-lg">
                 <div class="card-body">
-                    <h5 class="card-title">{{ testimonial.name }} wrote on {{ testimonial.created_on }}</h5>
-                    <p class="card-text" style="font-size: small">{{ testimonial.message }}</p>
-                    <p class="card-bottom" style="font-size: small">{{ testimonial.rating }}</p>
+                    <h5 class="card-title ">{{ testimonial.name }} <span class="testimonial-date-size"><i>wrote on {{ testimonial.created_on }} {{ testimonial.created_at|date:"d/m/Y" }}</i></span></h5>
+                    <p class="card-text" >{{ testimonial.message }}</p>
+                    <p class="bold"> <i class="fa-solid fa-star icon-gold"></i> {{ testimonial.rating }}</p>
                 </div>
             </div>
         </div>
