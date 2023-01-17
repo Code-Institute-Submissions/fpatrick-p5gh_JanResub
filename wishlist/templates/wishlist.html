@@ -29,7 +29,7 @@
                 <tbody>
                 {% for wishlist_item in wishlist_items %}
                 <tr>
-                    <th scope="row">{{ wishlist_item.product }}</th>
+                    <th scope="row"><a href="{% url 'product_detail' wishlist_item.product.id %}" >{{ wishlist_item.product }}</a></th>
                     <td>{{ wishlist_item.product.price }}</td>
                     <td>{{ wishlist_item.product.stock }}</td>
                     <td>{{ wishlist_item.added_at }}</td>
