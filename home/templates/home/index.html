@@ -27,59 +27,50 @@
     </div>
 </div>
 
-<div class="container-fluid bg-light p-4">
+<div class="container-fluid bg-white p-4">
     <div class="container">
-        <h1 class="text-center mb-4">Testimonials</h1>
+        <h1 class="text-center mb-4">Latest Testimonials</h1>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-4">
-                            <div class="card text-center">
+                        {% for testimonial in latest_testimonials %}
+                        <div class="col-md-4 col-12">
+                            <div class="card rounded text-center">
                                 <div class="card-body">
                                     <blockquote class="blockquote mb-0">
-                                        <p>Realmente um site legal</p>
-                                        <p>10 Stars</p>
-                                        <footer class="blockquote-footer">Erick</footer>
+                                        <p class="testimonial-size">{{ testimonial.message }}</p>
+                                        <p class="bold"> <i class="fa-solid fa-star icon-gold"></i> {{ testimonial.rating }}</p>
+                                        <footer class="blockquote-footer">{{ testimonial.name }}</footer>
                                     </blockquote>
                                 </div>
                                 <div class="card-footer text-muted">
-                                    2 days ago
+                                    <span class="testimonial-date-size">{{ testimonial.created_at }}</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-4">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <blockquote class="blockquote mb-0">
-                                        <p>Realmente um site legal</p>
-                                        <p>10 Stars</p>
-                                        <footer class="blockquote-footer">Erick</footer>
-                                    </blockquote>
-                                </div>
-                                <div class="card-footer text-muted">
-                                    2 days ago
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <h3 class="text-center">Text 3</h3>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="row">
-                        <div class="col-4">
-                            <h3 class="text-center">Text 4</h3>
+                        {% for extra_testimonial in more_testimonials %}
+                        <div class="col-md-4 col-12">
+                            <div class="card rounded text-center">
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p class="testimonial-size">{{ extra_testimonial.message }}</p>
+                                        <p class="bold"> <i class="fa-solid fa-star icon-gold"></i> {{ extra_testimonial.rating }}</p>
+                                        <footer class="blockquote-footer">{{ extra_testimonial.name }}</footer>
+                                    </blockquote>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    {{ extra_testimonial.created_at }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
 
-                        </div>
-                        <div class="col-4">
-                            <h3 class="text-center">Text 5</h3>
-                        </div>
-                        <div class="col-4">
-                            <h3 class="text-center">Text 6</h3>
-                        </div>
                     </div>
                 </div>
             </div>
