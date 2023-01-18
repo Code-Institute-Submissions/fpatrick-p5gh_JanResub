@@ -41,23 +41,33 @@ html {
 }
 
 .xbox {
-    background: url('/media/xbox-background.jpg') no-repeat;
+    /* Apply a linear gradient with four color stops to create a fade-in effect at the top and bottom of the background image */
+    background-image: linear-gradient(to bottom, white, transparent 20%, transparent 80%, white), url('/media/xbox-background.jpg');
+    /* Ensure the background image covers the entire element */
     background-size: cover;
+    /* Position the element relative to its parent */
+    position: relative;
+
 }
 
 .xbox::before, .playstation::before, .nintendo::before {
+    /* Clear the content */
     content: "";
+    /* Position the pseudo-element absolute to its parent element */
     position: absolute;
+    /* Set the top, right, bottom, and left properties to 0px to cover the entire parent element */
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
+    /* Set the background color to a transparent white */
     background-color: rgba(255, 255, 255, 0.7);
 }
 
 .playstation {
-    background: url('/media/playstation-background.jpg') no-repeat;
+    background-image: linear-gradient(to bottom, white, transparent 20%, transparent 80%, white), url('/media/playstation-background.jpg');
     background-size: cover;
+    position: relative;
 }
 
 .badge {
@@ -66,8 +76,9 @@ html {
 }
 
 .nintendo {
-    background: url('/media/nintendo-background.jpg') no-repeat;
+    background-image: linear-gradient(to bottom, white, transparent 20%, transparent 80%, white), url('/media/nintendo-background.jpg');
     background-size: cover;
+    position: relative;
 }
 
 .green {
