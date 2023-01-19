@@ -8,11 +8,8 @@ from .models import Product, Category, Review
 from .forms import ProductForm, ReviewForm
 
 
-# Create your views here.
-
 def all_products(request):
-    """ A view to show all products, including sorting and search queries """
-
+    """View to show all products, including sorting and search queries."""
     products = Product.objects.all()
     query = None
     categories = None
@@ -138,7 +135,7 @@ def edit_product(request, product_id):
 def edit_review(request, product_id):
     """ Edit a review in the store """
 
-    #product = get_object_or_404(Product, pk=product_id)
+    # product = get_object_or_404(Product, pk=product_id)
     review = get_object_or_404(Review, id=product_id)
     product = review.product
     if request.method == 'POST':

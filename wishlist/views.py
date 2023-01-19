@@ -7,7 +7,6 @@ from products.models import Product
 from wishlist.models import Wishlist
 
 
-# Create your views here.
 @login_required
 def add_to_wishlist(request, product_id):
     """
