@@ -20,11 +20,6 @@ html {
     color: white;
 }
 
-#search-home::placeholder {
-    color: #febd69;
-    opacity: 60%;
-}
-
 .search-btn {
     background: #febd69;
     color: black;
