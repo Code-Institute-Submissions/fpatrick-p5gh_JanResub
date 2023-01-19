@@ -58,6 +58,9 @@ INSTALLED_APPS = [
     'wishlist',
     'testimonials',
 
+    # Django extensions
+    'django_extensions',
+
     # Other
     'crispy_forms',
     'storages',
