@@ -1,4 +1,4 @@
-# Welcome to Gamerhood!
+# Gamerhood!
 
 Gamerhood is an e-commerce website focused on providing the best gaming products and merchandise to the gaming community. The name "Gamerhood" represents the idea of a community where all gamers belong and can find everything they need to enhance their gaming experience.
 
