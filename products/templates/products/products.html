@@ -84,7 +84,7 @@
                                             {% if product.category %}
                                             <span class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                                                     |
+                                                     &nbsp;&nbsp;
                                                     {% if product.category.name == 'xbox_console' or product.category.name == 'xbox_games' %}
                                                         <span class="green"><i class="fa-brands fa-xbox"></i> {{ product.category.friendly_name }}</span>
                                                      {% elif product.category.name == 'playstation_console' or product.category.name == 'playstation_games' %}
@@ -98,9 +98,9 @@
                                             </span>
                                             {% endif %}
                                             {% if product.total_rating %}
-                                                <small class="text-muted"> | <i class="fas fa-star mr-1"></i>{{ product.total_rating }} / 10</small>
+                                                <small class="text-muted">&nbsp;&nbsp;<i class="fas fa-star mr-1"></i>{{ product.total_rating }} / 10</small>
                                             {% else %}
-                                                <small class="text-muted"> | <i class="fas fa-star mr-1"></i>No Rating</small>
+                                                <small class="text-muted">&nbsp;&nbsp;&nbsp;<i class="fas fa-star mr-1"></i>No Rating</small>
                                             {% endif %}
                                             {% if request.user.is_superuser %}
                                                 <small class="ml-3">
