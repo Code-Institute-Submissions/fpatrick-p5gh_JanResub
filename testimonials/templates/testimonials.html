@@ -24,7 +24,7 @@
             <div class="card rounded-lg">
                 <div class="card-body">
                     <h5 class="card-title ">{{ testimonial.name }} <span class="testimonial-date-size"><i>wrote on {{ testimonial.created_on }} {{ testimonial.created_at|date:"d/m/Y" }}</i></span></h5>
-                    <p class="card-text" >{{ testimonial.message }}</p>
+                    <p class="card-text" ><i class="fa-solid fa-quote-left"></i> {{ testimonial.message }} <i class="fa-sharp fa-solid fa-quote-right"></i></p>
                     <p class="bold"> <i class="fa-solid fa-star icon-gold"></i> {{ testimonial.rating }}</p>
                 </div>
             </div>
