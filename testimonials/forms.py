@@ -20,4 +20,3 @@ class TestimonialForm(forms.ModelForm):
                 raise ValidationError(('Please enter a rating between 1 and 10'))
 
         return data
-
