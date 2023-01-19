@@ -26,3 +26,4 @@ six==1.16.0
 sqlparse==0.4.3
 stripe==2.42.0
 urllib3==1.26.12
+django-extensions==3.2.1
