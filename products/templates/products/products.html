@@ -143,7 +143,6 @@
             <i class="fas fa-arrow-up text-warning mx-auto my-auto"></i>
         </a>
     </div>
-    </div>
 {% endblock %}
 
 {% block postloadjs %}
@@ -151,7 +150,7 @@
     <script>
 		$('.btt-link').click(function(e) {
 			window.scrollTo(0,0)
-		})
+		});
 	</script>
 
     <script>
@@ -174,6 +173,6 @@
 
                 window.location.replace(currentUrl);
             }
-        })
+        });
     </script>
 {% endblock %}
