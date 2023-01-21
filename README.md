@@ -60,6 +60,9 @@ Overall, these SEO implementation strategies will help to improve the visibility
 In this project, it was employed an Agile methodology approach, which allowed quickly adapt to changing requirements and deliver a working product incrementally. To facilitate this approach, it was utilized a Kanban board to track and prioritize user stories. [Click here to access the kanban board](https://github.com/users/fpatrick/projects/2)
 
 ## Wireframe
+* Initial mockup before the development
+    ![IMG_8343 (1)](https://user-images.githubusercontent.com/39106404/213876513-6f65a728-50d5-4ac5-8459-f27484c2b6d8.png)
+
 
 Wireframe for the product detail page. I believe that this is the most important page of the whole website, as it is where users will get information about the game, read reviews, and write reviews. Therefore, I wanted to make sure that this page had a clear and user-friendly layout.
 
