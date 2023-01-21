@@ -2,9 +2,9 @@
 
 Gamerhood is an e-commerce website focused on providing the best gaming products and merchandise to the gaming community. The name "Gamerhood" represents the idea of a community where all gamers belong and can find everything they need to enhance their gaming experience.
 
-Our website offers a wide range of products including gaming consoles, video games, gaming accessories, and gamer-themed apparel. We are dedicated to providing our customers with the latest products at competitive prices, as well as excellent customer service.
+The website offers a wide range of products including gaming consoles, video games, gaming accessories, and gamer-themed apparel. We are dedicated to providing customers with the latest products at competitive prices, as well as excellent customer service.
 
-We understand that gaming is more than just a hobby, it's a lifestyle. That's why we've created Gamerhood, a place where gamers can come together, share their passion, and find everything they need to take their gaming to the next level.
+Gaming is more than just a hobby, it's a lifestyle. That's why Gamerhood was created, a place where gamers can come together, share their passion, and find everything they need to take their gaming to the next level.
 
 Live link: https://gamerhood.herokuapp.com/
 
