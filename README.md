@@ -1,5 +1,42 @@
 # Gamerhood!
-Live link: https://gamerhood.herokuapp.com/
+
+- [Business model](#business-model)
+  * [Marketing](#marketing)
+  * [SEO](#seo)
+- [Development Choices](#development-choices)
+  * [Database Schema](#database-schema)
+  * [Agile](#agile)
+  * [Wireframe](#wireframe)
+  * [Typography](#typography)
+  * [Frameworks and Tools](#frameworks-and-tools)
+- [Testing](#testing)
+- [Features](#features)
+    + [Product by Category](#product-by-category)
+    + [Menu](#menu)
+    + [Homepage](#homepage)
+    + [Testimonials Carousel](#testimonials-carousel)
+    + [Footer](#footer)
+    + [Product Detail](#product-detail)
+    + [Product Actions](#product-actions)
+    + [Product Reviews](#product-reviews)
+    + [Bag](#bag)
+    + [Bag Stock](#bag-stock)
+    + [Wishlist](#wishlist)
+    + [Testimonials](#testimonials)
+    + [Manage Product](#manage-product)
+    + [Profile](#profile)
+    + [Add/Edit Testimonial](#add-edit-testimonial)
+    + [Checkout](#checkout)
+- [Deployment](#deployment)
+    + [Create the Heroku App:](#create-the-heroku-app-)
+    + [Attach the Postgres database:](#attach-the-postgres-database-)
+    + [Update Heroku Config Vars](#update-heroku-config-vars)
+    + [Deploy](#deploy)
+  * [AWS Set Up](#aws-set-up)
+    + [AWS S3 Bucket](#aws-s3-bucket)
+    + [IAM](#iam)
+    + [Connecting S3 to Django](#connecting-s3-to-django)
+- [Credits](#credits)
 
 Gamerhood is an e-commerce website focused on providing the best gaming products and merchandise to the gaming community. The name "Gamerhood" represents the idea of a community where all gamers belong and can find everything they need to enhance their gaming experience.
 
@@ -7,8 +44,10 @@ Our website offers a wide range of products including gaming consoles, video gam
 
 We understand that gaming is more than just a hobby, it's a lifestyle. That's why we've created Gamerhood, a place where gamers can come together, share their passion, and find everything they need to take their gaming to the next level.
 
+Live link: https://gamerhood.herokuapp.com/
 
 ![Screenshot 2023-01-19 at 19 13 47](https://user-images.githubusercontent.com/39106404/213685271-13caee2c-4d1a-4224-b2a1-359be88c7049.png)
+
 
 # Business model
 
