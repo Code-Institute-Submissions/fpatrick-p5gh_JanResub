@@ -94,7 +94,7 @@ Lato font is a great font choice for a website because it is versatile, clean, a
 
 # Testing
 
-[Please visit the testing page by clicking here.](https://github.com/fpatrick/p5gh/blob/master/TESTING.md)
+[Visit the testing page by clicking here.](https://github.com/fpatrick/p5gh/blob/master/TESTING.md)
 
 # Features
 
@@ -157,6 +157,10 @@ Lato font is a great font choice for a website because it is versatile, clean, a
 ### Add/Edit Testimonial
 * It adds a new testimonial or automatically brings an existing one to edit.
     ![Screenshot 2023-01-21 at 15-37-57 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874728-2c84c7f1-be49-418e-8a0f-6e36d1a56cf1.png)
+
+### Checkout
+* Checkout with a card using Stripe API and getting all order infos.
+    ![Screenshot 2023-01-21 at 16 09 32](https://user-images.githubusercontent.com/39106404/213875837-c1feec62-be7f-4a45-acc9-d97a833f49cc.png)
 
 # Deployment
 
