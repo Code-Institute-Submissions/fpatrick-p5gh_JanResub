@@ -99,26 +99,64 @@ Lato font is a great font choice for a website because it is versatile, clean, a
 # Features
 
 ### Product by Category
+* When entering one of the three biggest video game brands (xbox, nintendo, playstation) category, it displays the brand logo in the background. Gamers are big fans of the brand they choose.
+    ![Screenshot 2023-01-21 at 15-34-45 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874645-6df9d7b7-9b3a-4b1f-8dcb-e20e1e02d2b5.png)
 
 ### Menu
+* Navbar with menus for easily finding products and displaying all testimonials. The search bar follows the amazon search bar color to be highlighted.
+    ![Screenshot 2023-01-21 at 15-33-36 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874558-3c5108af-bcc9-4343-b131-f9cd9ec0e30e.png)
 
 ### Homepage
+* The background picture has a character using magic and guns, like many video games. It relates to the audience.
+    ![Screenshot 2023-01-21 at 15-33-56 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874603-637db7d6-4b91-4233-9d4b-2db31a0c940a.png)
 
-### Testimonials Carrousel
+### Testimonials Carousel
+* This carousel on the homepage displays the latest 6 testimonials cycling between 2 groups of 3 every 5 seconds.
+    ![Screenshot 2023-01-21 at 15-34-08 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874619-a742553c-2bc3-4639-b87c-7bece64103fa.png)
 
 ### Footer
+* The footer is always there to send the visitor to the Facebook page or offering the newsletter subscribing. 
+    ![Screenshot 2023-01-21 at 15-34-23 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874630-469ef491-4a3f-45ef-870f-4f6ad750281e.png)
 
 ### Product Detail
+* Product detail is a very special page, it displays important info about products and a youtube video of the trailer.
+    ![Screenshot 2023-01-21 at 15-36-11 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874667-152ebd00-9578-49bf-a814-cd6d9038ee10.png)
+
+### Product Actions
+* Customers can add a product to a wishlist or bag. Easily check the stock.
+    ![Screenshot 2023-01-21 at 15-36-24 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874681-d14ce059-aee1-40bb-8ccf-fd63cc7aceb3.png)
 
 ### Product Reviews
+* Registered users can rate the product and review if it is a good product or not.
+    ![Screenshot 2023-01-21 at 15-36-34 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874693-4f6e2988-7e62-4c79-820c-d5116fbb59a1.png)
 
 ### Bag
+* The bag display all products ready to checkout.
+    ![Screenshot 2023-01-21 at 15-38-32 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874743-afc8aabd-574c-4132-b9c6-b124e1fbdb36.png)
+
+### Bag Stock
+* Customers can check the current stock on the bag and can't add more quantity than it has on stock.
+    ![Screenshot 2023-01-21 at 15-39-16 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874752-bedace2c-b17d-4076-9754-623ee0f62967.png)
 
 ### Wishlist
+* Users can click on the product name inside a wishlist to go to the product page. It also displays the current price and stock.
+    ![Screenshot 2023-01-21 at 15-37-06 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874707-a470d605-09d2-4f5e-8a66-69d11e5ac139.png)
 
 ### Testimonials
+* Display all testimonials people have left about the website. So new customers can see what people think and trust.
+    ![Screenshot 2023-01-21 at 15-35-04 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874653-173ce046-8e5a-4e91-8f36-7d38d2128e6d.png)
 
-### Add product
+### Manage Product
+* It is easy to add, edit or delete products.
+    ![Screenshot 2023-01-21 at 15-38-09 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874739-a8e51980-579d-4955-9223-6492b8b66118.png)
+
+### Profile
+* Users can edit their profile and buy quickly and easy with the registered info.
+    ![Screenshot 2023-01-21 at 15-37-45 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874713-08acd0b2-45c3-4ca3-8648-3c43a4b2723d.png)
+
+### Add/Edit Testimonial
+* It adds a new testimonial or automatically brings an existing one to edit.
+    ![Screenshot 2023-01-21 at 15-37-57 Gamerhood - A magic gaming world waits for you](https://user-images.githubusercontent.com/39106404/213874728-2c84c7f1-be49-418e-8a0f-6e36d1a56cf1.png)
 
 # Deployment
 
@@ -315,3 +353,12 @@ AWS_S3_OBJECT_PARAMETERS = {
 - Inside the folder, click 'Upload', 'Add files', and then select all the images that you are using for your site.
 - Then under 'Permissions' select the option 'Grant public-read access' and click upload.
 - Your static files and media files should be automatically linked from django to your S3 bucket.
+
+# Credits
+
+* Code Institute
+* Django Documentation
+* Bootstrap Documentation
+* Github Co-pilot
+* W3School
+* Stack Overflow
